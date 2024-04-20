@@ -58,8 +58,8 @@ module "rds" {
   environment                  = local.environment
   private_data_subnet_az1_id   = module.vpc.private_data_subnet_az1_id
   private_data_subnet_az2_id   = module.vpc.private_data_subnet_az2_id
-  database_snapshot_identifier = var.vpc.database_snapshot_identifier
-  database_instance_class      = var.vpc.database_instance_class
+  database_snapshot_identifier = var.database_snapshot_identifier
+  database_instance_class      = var.database_instance_class
   availability_zone_1          = module.vpc.availability_zone_1
   db_instance_identifier       = var.db_instance_identifier
   multi_az_deployment          = var.multi_az_deployment
