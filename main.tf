@@ -63,5 +63,5 @@ module "rds" {
   availability_zone_1          = module.vpc.availability_zone_1
   db_instance_identifier       = var.db_instance_identifier
   multi_az_deployment          = var.multi_az_deployment
-  database_security_group_id   = module.security_group.database_security_group_id
+  database_security_group_id   = module.security-group.database_security_group_id
 }
