@@ -16,8 +16,6 @@ variable "private_data_subnet_data2_cidr" {}
 variable "ssh-ip" {}
 
 # Create RDS variable
-variable "project_name" {}
-variable "environment" {}
 variable "private_data_subnet_az1_id" {}
 variable "private_data_subnet_az2_id" {}
 variable "database_snapshot_identifier" {}
