@@ -56,8 +56,8 @@ module "rds" {
   source                       = "git@github.com:technow10/rentzone-terraform-modules.git//rds"
   project_name                 = local.project_name
   environment                  = local.environment
-  private_data_subnet_az1_id   = module.vpc.private_data_subnet_az1_id
-  private_data_subnet_az2_id   = module.vpc.private_data_subnet_az2_id
+  private_data_subnet_az1_id   = var.vpc.private_data_subnet_az1_id
+  private_data_subnet_az2_id   = var.vpc.private_data_subnet_az2_id
   database_snapshot_identifier = var.database_snapshot_identifier
   database_instance_class      = var.database_instance_class
   availability_zone_1          = module.vpc.private_data_subnet_az1_id
@@ -69,7 +69,7 @@ module "rds" {
 # Request SSL certificate
 module "ssl_certificate" {
   source            = "git@github.com:technow10/rentzone-terraform-modules.git//acm"
-  domain_name       = var.acm.domain_name
-  alternative_names = var.acm.alternative_names
+  domain_name       = var.domain_name
+  alternative_names = var.alternative_names
 
 }
