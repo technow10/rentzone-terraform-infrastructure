@@ -24,3 +24,8 @@ variable "multi_az_deployment" {}
 # Create acm variables
 variable "domain_name" {}
 variable "alternative_names" {}
+
+# create alb variable
+variable "target_type" {}
+
+

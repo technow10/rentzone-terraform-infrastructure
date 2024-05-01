@@ -73,3 +73,17 @@ module "ssl_certificate" {
   alternative_names = var.alternative_names
 
 }
+
+# Create an ALB module
+module "application_load_balancer" {
+  source = "git@github.com:technow10/rentzone-terraform-modules.git//alb"
+  project_name = local.project_name
+  environment = local.environment
+  alb_security_group_id = module.security-group.alb_security_group_id
+  private_data_subnet_az1_id = module.vpc.private_data_subnet_az1_id
+  private_data_subnet_az2_id = module.vpc.private_data_subnet_az2_id
+  target_type = var.target_type
+  vpc_id = module.vpc.vpc_id
+  certificate_arn = module.ssl_certificate.certificate_arn
+  
+}
