@@ -125,9 +125,25 @@ module "ecs" {
 
 # create autoscaling group 
 module "ecs_asg" {
-  source = "git@github.com:technow10/rentzone-terraform-modules.git//asg"
+  source       = "git@github.com:technow10/rentzone-terraform-modules.git//asg"
   project_name = local.project_name
-  environment = local.environment
-  ecs_service = modules.ecs.ecs_service
-  
+  environment  = local.environment
+  ecs_service  = modules.ecs.ecs_service
+
+}
+
+# Create route53 
+module "route53" {
+  source                             = "git@github.com:technow10/rentzone-terraform-modules.git//route53"
+  domain_name                        = module.ssl_certificate.domain_name
+  record_name                        = var.record_name
+  application_load_balancer_dns_name = module.application_load_balancer.application_load_balancer_dns_name
+  application_load_balancer_zone_id  = module.application_load_balancer.application_load_balancer_zone_id
+
+}
+
+# print website url
+output "website_url" {
+  value = join("", ["https://", var.record_name, ".", var.domain_name])
+
 }
