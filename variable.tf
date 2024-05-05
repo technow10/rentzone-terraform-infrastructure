@@ -32,4 +32,10 @@ variable "target_type" {}
 variable "env_file_bucket_name" {}
 variable "env_file_name" {}
 
+# ecs variable
+variable "architecture" {}
+variable "container_image" {}
+
+
+
 
